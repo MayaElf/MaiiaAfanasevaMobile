@@ -19,7 +19,7 @@ public class BaseTest implements IDriver {
     public AppiumDriver getDriver() { return appiumDriver; }
 
     public IPageObject getPo() {
-        return po;
+        return this.po;
     }
 
     @Parameters({"platformName","appType","deviceName","browserName","app"})
