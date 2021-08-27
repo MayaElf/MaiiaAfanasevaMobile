@@ -2,12 +2,23 @@ package properties;
 
 import entity.User;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 public class UserProperties {
-    private static final String USERNAME = "Ivan";
-    private static final String EMAIL = "ivan@mail.ru";
-    private static final String PASSWORD = "qwerty123";
+    private static String username;
+    private static String email;
+    private static String password;
+
+    public UserProperties() {
+        Locale locale = new Locale("en", "US");
+        ResourceBundle rb = ResourceBundle.getBundle("nativeTest", locale);
+        username = rb.getString("username");
+        email = rb.getString("email");
+        password = rb.getString("password");
+    }
 
     public User getUser() {
-        return new User(EMAIL, USERNAME, PASSWORD);
+        return new User(email, username, password);
     }
 }

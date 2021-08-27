@@ -9,12 +9,10 @@ import org.openqa.selenium.support.PageFactory;
 
 public class NativePageObject extends BasePage {
 
-    private final static String APP_NAME = "platkovsky.alexey.epamtestapp:id/";
-
-    @AndroidFindBy(id = "platkovsky.alexey.epamtestapp:id/email_sign_in_button")
+    @AndroidFindBy(id = APP_NAME + "/email_sign_in_button")
     WebElement signInBtn;
 
-    @AndroidFindBy(id = "platkovsky.alexey.epamtestapp:id/register_button")
+    @AndroidFindBy(id = APP_NAME + "/register_button")
     private WebElement registerBtn;
 
     @AndroidFindBy(id = APP_NAME + "login_email")
@@ -41,5 +39,4 @@ public class NativePageObject extends BasePage {
         signInBtn.click();
         return new BudgetPage(appiumDriver);
     }
-
 }

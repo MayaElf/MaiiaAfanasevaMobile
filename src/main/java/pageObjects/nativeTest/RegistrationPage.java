@@ -7,9 +7,7 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
-public class RegistrationPage {
-
-    public static final String APP_NAME = "platkovsky.alexey.epamtestapp:id/";
+public class RegistrationPage extends BasePage{
 
     @AndroidFindBy(id = APP_NAME + "registration_email")
     private WebElement regEmailInput;

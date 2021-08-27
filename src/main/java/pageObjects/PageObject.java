@@ -36,6 +36,7 @@ public class PageObject implements IPageObject {
 
     }
 
+    @Override
     public Object getPageObject() {
         return this.somePageObject;
     }
