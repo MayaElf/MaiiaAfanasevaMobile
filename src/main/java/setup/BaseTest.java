@@ -2,7 +2,10 @@ package setup;
 
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 import pageObjects.PageObject;
 
 import java.io.File;
@@ -19,7 +22,7 @@ public class BaseTest implements IDriver {
     public AppiumDriver getDriver() { return appiumDriver; }
 
     public IPageObject getPo() {
-        return po;
+        return this.po;
     }
 
     @Parameters({"platformName","appType","deviceName","browserName","app"})

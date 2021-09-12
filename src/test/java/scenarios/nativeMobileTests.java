@@ -1,15 +1,26 @@
 package scenarios;
 
+import entity.User;
+import org.testng.Assert;
 import org.testng.annotations.Test;
+import pageObjects.nativeTest.BudgetPage;
+import pageObjects.nativeTest.NativePageObject;
+import pageObjects.nativeTest.RegistrationPage;
+import properties.MobileDataProvider;
 import setup.BaseTest;
 
 public class nativeMobileTests extends BaseTest {
 
-    @Test(groups = {"native"}, description = "This simple test just click on the Sign In button")
-    public void simpleNativeTest() throws IllegalAccessException, NoSuchFieldException, InstantiationException {
-        getPo().getWelement("signInBtn").click();
-        System.out.println("Simplest Android native test done");
-
+    @Test(dataProvider = "nativeDataProvider",
+            dataProviderClass = MobileDataProvider.class,
+            groups = {"native"},
+            description = "Make sure that you are on the BudgetActivity page")
+    public void RegistrationTest(User user, String budgetActivity) {
+        NativePageObject nativePageObject = (NativePageObject) getPo().getPageObject();
+        RegistrationPage registrationPage = nativePageObject.openRegistrationPage();
+        registrationPage.register(user, getDriver());
+        BudgetPage budgetPage = nativePageObject.login(user);
+        budgetPage.waitForBudgetPageIsLoaded();
+        Assert.assertEquals(budgetPage.getBudgetPageName(), budgetActivity);
     }
-
 }

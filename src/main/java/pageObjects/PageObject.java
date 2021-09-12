@@ -2,6 +2,8 @@ package pageObjects;
 
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.WebElement;
+import pageObjects.nativeTest.NativePageObject;
+import pageObjects.webTest.WebPageObject;
 import setup.IPageObject;
 
 import java.lang.reflect.Field;
@@ -22,7 +24,6 @@ public class PageObject implements IPageObject {
                 break;
             default: throw new Exception("Can't create a page object for "+appType);
         }
-
     }
 
 
@@ -33,5 +34,10 @@ public class PageObject implements IPageObject {
         field.setAccessible(true);
         return (WebElement) field.get(somePageObject);
 
+    }
+
+    @Override
+    public Object getPageObject() {
+        return this.somePageObject;
     }
 }
